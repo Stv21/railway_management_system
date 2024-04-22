@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Details</title>
+    <link href="{% static 'css/train_details.css' %}" rel="stylesheet">
+</head>
+<body>
+    <h1>Train Details</h1>
+    <div id="train-details-container">
+        {% for train in trains %}
+            <div class="train-box">
+                <h2>{{ train.trainTitle }}</h2>
+                <p>Departure Timing: {{ train.deptTiming }}</p>
+                <p>Departure Station: {{ train.deptStation }}</p>
+                <p>Departure Date: {{ train.deptDate }}</p>
+                <p>Destination Timing: {{ train.desTiming }}</p>
+                <p>Destination Station: {{ train.desStation }}</p>
+                <p>Destination Date: {{ train.desDate }}</p>
+                <!-- Add more details as needed -->
+                <button class="book-button" data-train-id="{{ train.id }}">Book</button>
+            </div>
+        {% endfor %}
+    <!-- </div>
+    <div class="modal-content">
+        <span class="close">×</span>
+        <h2>Booking Confirmation</h2>
+        <p>Your ticket has been successfully booked!</p>
+        <!-- Additional details can be added here -->
+    </div> -->
+ 
+            <!-- Additional details can be added here -->
+        </div>
+    </div>
+
+
+    <script src="{% static 'booking.js' %}"></script>
+    
+</body>
+</html>
+{% endblock %}

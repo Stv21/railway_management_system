@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    /* CSS for Train List */
+    .container {
+        height: 100vh; /* Fill the screen vertically */
+        margin: 0 auto;
+        padding: 20px;
+        background-image: url("{% static 'images/background.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-color: rgba(255, 255, 255, 0.8); /* Light and faded background color */
+        border-radius: 10px; /* Optional: Add border radius for a rounded container */
+    }
+
+    .header-container {
+        background-color: white; /* White background for the header */
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #333; /* Dark gray color for the text */
+    }
+
+    .container ul {
+        list-style-type: none;
+        padding: 10px;
+        background-color: white; /* White background for the ul */
+        border-radius: 5px; /* Rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    }
+
+    li {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<!-- Main Container -->
+<div class="container" id="TrainListContainer">
+    <div class="header-container">
+        <h2>Train List</h2>
+    </div>
+    <ul>
+        {% for train in trains %}
+            <li>{{ train.trainTitle }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Your Tickets</h1>
+    <ul>
+        {% for ticket in user_tickets %}
+            <li>{{ ticket }}</li>
+        {% empty %}
+            <li>No tickets found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

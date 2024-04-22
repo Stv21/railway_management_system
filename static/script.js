@@ -1,0 +1,54 @@
+// const searchInput = document.getElementById("searchInput");
+// const searchButton = document.getElementById("searchButton");
+// const resultsContainer = document.getElementById("results");
+document.getElementById('search-btn').addEventListener('click', function() {
+  // Redirect to train_details.html when search button is clicked
+  window.location.href = '/train_details/';});
+
+
+
+// Your existing image slider JavaScript code here
+
+let slideIndex = 0;
+let timeoutId = null;
+const slides = document.getElementsByClassName("mySlides");
+const dots = document.getElementsByClassName("dot");
+
+showSlides();
+
+function currentSlide(index) {
+  slideIndex = index - 1;
+  showSlides();
+}
+
+function plusSlides(step) {
+  slideIndex += step - 1;
+
+  if (slideIndex < 0) {
+    slideIndex = slides.length - 1;
+  }
+
+  showSlides();
+}
+
+function showSlides() {
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    dots[i].classList.remove("active");
+  }
+
+  slideIndex++;
+
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].classList.add("active");
+
+  if (timeoutId) {
+    clearTimeout(timeoutId);
+  }
+
+  timeoutId = setTimeout(showSlides, 5000); // Change image every five seconds
+}

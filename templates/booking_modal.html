@@ -1,0 +1,92 @@
+<!-- booking_modal.html -->
+<div id="booking-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <!-- Booking form fields go here -->
+        <form id="booking-form">
+            <!-- Include form fields for booking details (e.g., name, date, seat selection, etc.) -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <!-- Add more form fields as needed -->
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Add CSS styles for the modal */
+    .modal {
+        display: none; /* Hide the modal by default */
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4); /* Overlay background */
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* Center the modal vertically and horizontally */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        position: relative;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const bookButtons = document.querySelectorAll('.book-button');
+        const modal = document.getElementById('booking-modal');
+        const closeModalButton = modal.querySelector('.close');
+
+        // Event listener for book buttons
+        bookButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Perform booking confirmation here
+                modal.style.display = 'block'; // Display the modal
+            });
+        });
+
+        // Event listener to close the modal
+        closeModalButton.addEventListener('click', function() {
+            modal.style.display = 'none'; // Hide the modal
+        });
+
+        // Close modal if user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none'; // Hide the modal
+            }
+        });
+
+        // Prevent form submission
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form from submitting
+
+            // Your booking logic here
+            // After successful booking, close the modal or show a confirmation message
+            modal.style.display = 'none'; // Hide the modal
+            alert('Your ticket has been successfully booked!');
+        });
+    });
+</script>

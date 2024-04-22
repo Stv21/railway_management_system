@@ -1,0 +1,77 @@
+<!-- book_ticket.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+<!-- Include the booking modal -->
+{% include 'booking_modal.html' %}
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  select,
+  input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+</style>
+
+<div class="container">
+  <form method="post">
+    {% csrf_token %}
+    <label for="departure_station">Departure Station:</label>
+    <select name="departure_station" id="departure_station">
+      {% for station in station_data.stations %}
+      <option value="{{ station.id }}">{{ station.name }}</option>
+      {% endfor %}
+    </select>
+    <label for="destination_station">Destination Station:</label>
+    <select name="destination_station" id="destination_station">
+      {% for station in station_data.stations %}
+      <option value="{{ station.id }}">{{ station.name }}</option>
+      {% endfor %}
+    </select>
+    <label for="date">Date:</label>
+    <input type="date" name="date" id="date">
+    <button type="submit">Book Ticket</button>
+  </form>
+</div>
+{% endblock %}
