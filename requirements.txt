@@ -1,0 +1,9 @@
+virtualenv
+celery
+django-crispy-forms
+numpy
+pandas
+bootstrap4
+fuzzywuzzy
+python-Levenshtein
+requests
