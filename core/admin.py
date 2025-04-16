@@ -1,9 +1,10 @@
 from django.contrib import admin
-from django.contrib import admin
-from .models import Station
-from .models import Train
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+from .models import Station, Train, Ticket, UserProfile
 
+# Register your models
 admin.site.register(Station)
 admin.site.register(Train)
-
-# Register your models here.
+admin.site.register(Ticket)
+admin.site.register(UserProfile)

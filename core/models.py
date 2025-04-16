@@ -6,7 +6,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 class Ticket(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     departure_station = models.CharField(max_length=100)
     destination_station = models.CharField(max_length=100)
     date = models.DateField()
